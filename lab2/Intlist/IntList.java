@@ -29,7 +29,7 @@ public class IntList {
      * A List with null rest, and first = 0.
      */
     public IntList() {
-    /* NOTE: public IntList () { }  would also work. */
+        /* NOTE: public IntList () { }  would also work. */
         this(0, null);
     }
 
@@ -74,6 +74,8 @@ public class IntList {
 
     /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
 
+    /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
+
 
     /**
      * Returns a list consisting of the elements of A followed by the
@@ -81,17 +83,38 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList ptr = new IntList(0, A);
+        while (A.rest != null) {
+            A = A.rest;
+        }
+
+        A.rest = B;
+
+        return ptr.rest;
     }
+
 
     /**
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList head = new IntList(A.first, null);
+        IntList ptr = new IntList(0, head);
+
+        while (A.rest != null) {
+            A = A.rest;
+            head.rest = new IntList(A.first, null);
+            head = head.rest;
+        }
+
+        while (B != null) {
+            head.rest = new IntList(B.first, null);
+            head = head.rest;
+            B = B.rest;
+        }
+
+        return ptr.rest;
     }
 
 
@@ -99,12 +122,12 @@ public class IntList {
 
 
 
-
-
-
-
-
-
+    /**
+     * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
+     * will be introduced later in the course or feature some form of advanced
+     * trickery which we implemented to help make your life a little easier for
+     * the lab.
+     */
 
 
 
